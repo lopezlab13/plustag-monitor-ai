@@ -1,0 +1,16 @@
+name: Verificar macOS
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verificar lógica sin cuentas reales
+        run: ./scripts/check.sh
+      - name: Compilar aplicación flotante
+        run: ./scripts/build.sh
